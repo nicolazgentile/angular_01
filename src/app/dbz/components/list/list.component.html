@@ -1,0 +1,27 @@
+<h3>Gestion de Listados</h3>
+
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-dark': isFirst,
+      'list-group-item-danger': isLast,
+      'list-group-item-primary': isEven,
+    }"
+    *ngFor="let character of characterList;
+            let i = index;
+            let isFirst = first;
+            let isLast = last;
+            let isEven = odd;
+            let isOdd = even;">
+      <div>
+        <span>{{i + 1}}# </span>
+        <span>{{character.name}} - </span>
+        <strong>Power: </strong>
+        <span>{{character.power}} </span>
+        <span>(Es par: {{ !isEven }} - Es impar: {{ !isOdd }})</span>
+      </div>
+      <span><button class="btn btn-danger" (click)="deleteCharacter(character.id)">X</button></span>
+  </li>
+  <!-- <li class="list-group-item">Krillin - 500</li>
+  <li class="list-group-item">Goku - 9500</li> -->
+</ul>
